@@ -97,22 +97,6 @@
       border-bottom: 1px solid var(--rule);
       padding: 1rem 1.25rem;
     }
-    .nav-toggle { display: block; }
-    .nav-list { display: none; margin-top: 0.75rem; }
-    .nav-list.is-open { display: block; }
-  }
-  .nav-toggle {
-    display: none;
-    background: none;
-    border: 1px solid var(--rule);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    padding: 0.5rem 0.85rem;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
   }
   .nav-title {
     font-variant: small-caps;
@@ -121,6 +105,7 @@
     font-size: 0.75rem;
     margin: 0 0 0.75rem;
     text-transform: lowercase;
+    scroll-margin-top: 1rem;
   }
   .nav-list { list-style: none; padding: 0; margin: 0; }
   .nav-list li { margin: 0; padding: 0.18rem 0; }
@@ -423,7 +408,7 @@
     .layout { display: block; max-width: none; }
     .sidebar { display: none; }
     main { padding: 0; max-width: none; }
-    .nav-toggle, .back-to-top { display: none !important; }
+    .back-to-top { display: none !important; }
     section { break-inside: avoid-page; margin: 1.5rem 0; }
     h2 { break-after: avoid-page; }
     .example, .framework, .reading-list > li, .omit-list > li, .end-notes > li {
@@ -446,8 +431,7 @@
 <div class="layout">
 
 <aside class="sidebar" aria-label="Section navigation">
-  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">Sections ▾</button>
-  <p class="nav-title">contents</p>
+  <p class="nav-title" id="contents">contents</p>
   <ol class="nav-list" id="nav-list">
     <li><a href="#stages"><span class="nav-num">1.</span>The Hero's Journey</a></li>
     <li><a href="#use-and-misuse"><span class="nav-num">2.</span>Use &amp; Misuse</a></li>
@@ -589,7 +573,7 @@
   <h4>What this costs</h4>
   <p>Translating descriptive mythology into prescriptive scene typology loses three things: (1) the centrality of <em>death of the self</em> — Belly of the Whale and Apotheosis as ego-dissolution events, not just suspense beats; (2) the post-boon difficulty — Refusal of the Return, Master of Two Worlds, the problem of integration after transformation; (3) the ambiguity of the feminine, where Campbell holds Goddess and Temptress in tension and Vogler simply elides it. What Vogler gains is teachability: any working writer can map a draft against his twelve stages in an afternoon, where Campbell's seventeen require interpretation.</p>
 
-  <a class="back-to-top" href="#top">↑ Back to top</a>
+  <a class="back-to-top" href="#contents">↑ Back to contents</a>
 </section>
 
 <hr class="section-divider">
@@ -613,7 +597,7 @@
 
   <p>Substantive critics from inside the screenwriting world include Robert McKee, who argues in <em>Story</em> (1997) that "controlling idea" and progressive complications matter more than any stage map, and John Yorke, whose five-act model is meant to recover the cognitive logic that beat sheets obscure. The honest position: Campbell-Vogler is a useful diagnostic tool when reading a draft and a dangerous tool when generating one.</p>
 
-  <a class="back-to-top" href="#top">↑ Back to top</a>
+  <a class="back-to-top" href="#contents">↑ Back to contents</a>
 </section>
 
 <hr class="section-divider">
@@ -673,7 +657,7 @@
     <p>The Boon is a re-ordered relationship to time, which is the most literal expression of "elixir" in modern cinema. Heisserer's adaptation works because he reorganizes Chiang's story into a monomyth shape without resolving the time paradox — Louise's Call is linguistic (decode the heptapods), her Mentor is absent, her Threshold is the shell itself, and the Ordeal is comprehension. The Atonement with the Father gets translated into a confrontation with motherhood-already-known: she will choose to have the daughter she has already grieved. The Return is impossible in the conventional sense because she has not gone anywhere, and yet she returns transformed, with the Boon being the willingness to live the line forward knowing its end. The film argues that knowledge can be the dragon at the cave mouth.</p>
   </article>
 
-  <a class="back-to-top" href="#top">↑ Back to top</a>
+  <a class="back-to-top" href="#contents">↑ Back to contents</a>
 </section>
 
 <hr class="section-divider">
@@ -733,7 +717,7 @@
     <p>A grafted monomyth with no structural reason to exist. Dahl's source has no origin for Willy Wonka — that absence is part of the character's gravity — and the film constructs a hero's journey to fill it: Ordinary World (arrival in the city), Call (the dream of the chocolate shop), Threshold (signing the laundry contract), Allies (the washhouse crew), Ordeal (the cartel). The beats execute competently. The problem is that the source character is famously sinister, and a coherent monomyth would need to deliver him, transformed, into that sinisterness — the Return with the Boon would be Wonka becoming Wonka. The film cannot do this without breaking its own tone, so it returns him as an undimmed innocent, which voids the prequel's reason to exist. The structure works against the property; the property cannot accommodate the structure. The result is a beat sheet in costume.</p>
   </article>
 
-  <a class="back-to-top" href="#top">↑ Back to top</a>
+  <a class="back-to-top" href="#contents">↑ Back to contents</a>
 </section>
 
 <hr class="section-divider">
@@ -747,68 +731,176 @@
 
   <div class="framework">
     <h3>Dan Harmon's Story Circle</h3>
-    <p>Eight steps, drawn as a circle and read clockwise from the top: <strong>You</strong> (zone of comfort) → <strong>Need</strong> → <strong>Go</strong> (unfamiliar situation) → <strong>Search</strong> (adapt) → <strong>Find</strong> (get what was wanted) → <strong>Take</strong> (pay a heavy price) → <strong>Return</strong> → <strong>Change</strong>. Harmon developed it running Channel 101, the short-film competition he co-founded with Rob Schrab in 2003, and later used it on <em>Community</em> and <em>Rick and Morty</em>.</p>
-    <p class="what"><strong>Solves:</strong> Compresses Campbell into something a TV writer can hold in their head for a 22-minute episode. The circle's symmetry makes the inner-vs-outer movement (top half = ordinary, bottom half = special; left half = before commitment, right half = after) visible at a glance.</p>
+    <p>Eight steps, drawn as a circle and read clockwise from the top. Harmon developed it running Channel 101, the short-film competition he co-founded with Rob Schrab in 2003, and later used it on <em>Community</em> and <em>Rick and Morty</em>. The circle's symmetry encodes inner-vs-outer movement: top half = ordinary world, bottom half = special world; left half = before commitment, right half = after.</p>
+    <ol class="vogler-list">
+      <li><strong>You.</strong> A character is established in their zone of comfort — default world, default self, default assumptions. The audience needs equilibrium before it can break.</li>
+      <li><strong>Need.</strong> Something is missing — a desire, a lack, an itch. Internal pressure precedes the external journey.</li>
+      <li><strong>Go.</strong> They cross into an unfamiliar situation, leaving the comfort zone for the lower half of the circle (the unconscious / special world).</li>
+      <li><strong>Search.</strong> They adapt by trial and error, learning the rules of the new conditions.</li>
+      <li><strong>Find.</strong> They get what they were looking for — the surface goal is achieved. Midpoint of the circle, opposite "You."</li>
+      <li><strong>Take.</strong> They pay a heavy price for it. Possession is costly; the prize is poisoned, partial, or carries unforeseen consequences.</li>
+      <li><strong>Return.</strong> They head back across the threshold toward their original world, now carrying what they took.</li>
+      <li><strong>Change.</strong> They re-enter the original world transformed; the change is visible against the unchanged context.</li>
+    </ol>
+    <p class="what"><strong>Solves:</strong> Compresses Campbell into something a TV writer can hold in their head for a 22-minute episode. The circle's symmetry makes the inner-vs-outer movement visible at a glance.</p>
     <p class="what"><strong>Sacrifices:</strong> Coarse resolution — eight beats can't differentiate Mentor from First Threshold. The Campbell-specific psychological events (Belly of the Whale, Atonement, Apotheosis, Master of Two Worlds) flatten into "Take" and "Return." Works best for episodic TV; brittle at feature length.</p>
   </div>
 
   <div class="framework">
     <h3>Maureen Murdock's Heroine's Journey</h3>
-    <p>From <em>The Heroine's Journey: Woman's Quest for Wholeness</em> (1990): Separation from the feminine → Identification with the masculine and gathering of allies → Road of Trials → Illusory boon of success / Spiritual aridity → Descent / Dark night of the soul → Urgent yearning to reconnect with the feminine → Healing the mother/daughter split → Healing the wounded masculine → Integration / Sacred marriage. Murdock developed it from clinical work with women in therapy who had achieved external success and found themselves spiritually empty.</p>
+    <p>From <em>The Heroine's Journey: Woman's Quest for Wholeness</em> (1990). Ten stages, developed from Murdock's clinical work with women in therapy who had achieved external success and found themselves spiritually empty.</p>
+    <ol class="vogler-list">
+      <li><strong>Separation from the Feminine.</strong> The protagonist rejects or distances herself from her mother and the feminine principle she represents — coded as weak, dependent, or constrained.</li>
+      <li><strong>Identification with the Masculine and Gathering of Allies.</strong> She adopts masculine values (achievement, autonomy, rationality) and aligns with male mentors and allies who validate them.</li>
+      <li><strong>Road of Trials, Meeting Ogres and Dragons.</strong> She confronts external obstacles and internalized myths ("dependency is weakness," "I am not enough") on the path to success.</li>
+      <li><strong>Finding the Boon of Success.</strong> She wins by the rules of the masculine world — career, recognition, mastery of external achievement.</li>
+      <li><strong>Awakening to Feelings of Spiritual Aridity, Death.</strong> The achieved success is hollow; depression, exhaustion, or somatic illness force the recognition that something essential has been amputated.</li>
+      <li><strong>Initiation and Descent to the Goddess.</strong> She undergoes a deliberate descent — withdrawal, grief, breakdown, or pilgrimage — into the underworld of disowned feminine experience.</li>
+      <li><strong>Urgent Yearning to Reconnect with the Feminine.</strong> From the depths, a longing emerges for what she rejected: body, intuition, relational knowing, the mother.</li>
+      <li><strong>Healing the Mother/Daughter Split.</strong> She reconciles with the maternal — literal, archetypal, or both — recovering the feminine inheritance she had refused.</li>
+      <li><strong>Healing the Wounded Masculine.</strong> She integrates the masculine on new terms, no longer in opposition to the feminine but in service to a larger self.</li>
+      <li><strong>Integration of Masculine and Feminine (Sacred Marriage).</strong> Inner union of both principles; she returns able to act from wholeness rather than from a forced choice between halves.</li>
+    </ol>
     <p class="what"><strong>Solves:</strong> Names a transformation arc Campbell's monomyth does not describe — outward achievement followed by recognition of its hollowness, descent, and integration of disowned feminine identity. Useful for character work where the "win" of the conventional hero's journey is the thing that has to be unlearned.</p>
     <p class="what"><strong>Sacrifices:</strong> Less directly mappable to plot mechanics; the inward stages don't translate cleanly into scene-level beats. Murdock's frame is therapeutic and archetypal rather than dramaturgic.</p>
   </div>
 
   <div class="framework">
     <h3>Kim Hudson's Virgin's Promise</h3>
-    <p>2009 book; foreword by Vogler. Thirteen beats: Dependent World → Price of Conformity → Opportunity to Shine → Dress the Part → Secret World → No Longer Fits Her World → Caught Shining → Gives Up What Kept Her Stuck → Kingdom in Chaos → Wanders in the Wilderness → Chooses Her Light → The Re-ordering → The Kingdom is Brighter.</p>
+    <p>2009 book; foreword by Vogler. Thirteen beats describing awakening-in-place rather than departure-and-return.</p>
+    <ol class="vogler-list">
+      <li><strong>Dependent World.</strong> The Virgin is shown embedded in a community whose rules she has not yet questioned, defined by external roles assigned to her.</li>
+      <li><strong>Price of Conformity.</strong> What she must give up to stay safe in that world becomes visible — a talent suppressed, a desire denied, a self unspoken.</li>
+      <li><strong>Opportunity to Shine.</strong> A chance arrives — a contest, a stranger, an invitation — that lets her glimpse her authentic gift in action.</li>
+      <li><strong>Dress the Part.</strong> She tentatively tries on the new identity, often privately or symbolically (clothing, name, gesture).</li>
+      <li><strong>Secret World.</strong> She maintains a hidden domain in which the new self can exist alongside the old conformity, unobserved.</li>
+      <li><strong>No Longer Fits Her World.</strong> The contradiction grows untenable; the dependent world starts pinching where she has expanded.</li>
+      <li><strong>Caught Shining.</strong> The secret breaks open; the community sees the new self.</li>
+      <li><strong>Gives Up What Kept Her Stuck.</strong> She consciously releases the protective role, status, or relationship that bound her to conformity.</li>
+      <li><strong>Kingdom in Chaos.</strong> Her revelation destabilizes the surrounding community, which had organized itself around her conformity.</li>
+      <li><strong>Wanders in the Wilderness.</strong> Cast out or self-exiled, she endures a period without external structure or validation.</li>
+      <li><strong>Chooses Her Light.</strong> Faced with the option to retreat back into conformity, she chooses her authentic self at full cost.</li>
+      <li><strong>The Re-ordering (Rescue).</strong> The community begins to reconfigure itself around her new truth; allies surface or systems shift to accommodate her.</li>
+      <li><strong>The Kingdom is Brighter.</strong> A new equilibrium in which both she and the community are more fully themselves than at the start.</li>
+    </ol>
     <p class="what"><strong>Solves:</strong> Hudson positions the Virgin's Promise as the <em>counterpart</em>, not counterargument, to Campbell — a story of awakening into authentic self while remaining in (and ultimately transforming) one's community, rather than departing for an external quest. Useful for coming-of-age, coming-out, and self-actualization stories that don't fit the leave-fight-return shape.</p>
     <p class="what"><strong>Sacrifices:</strong> Less applicable to action/adventure plots driven by external antagonists. Some beats (Dress the Part, Caught Shining) are gender-coded in ways that resist gender-flipping cleanly without translation.</p>
   </div>
 
   <div class="framework">
     <h3>Blake Snyder's <em>Save the Cat!</em> beat sheet</h3>
-    <p>Fifteen beats with specific page targets in a 110-page screenplay: Opening Image (p.1) → Theme Stated (~p.5) → Set-Up (pp.1–10) → Catalyst (~p.12) → Debate (pp.12–25) → Break Into Two (~p.25) → B Story (~p.30) → Fun and Games (pp.30–55) → Midpoint (~p.55) → Bad Guys Close In (pp.55–75) → All Is Lost (~p.75) → Dark Night of the Soul (pp.75–85) → Break Into Three (~p.85) → Finale (pp.85–110) → Final Image (~p.110).</p>
+    <p>Fifteen beats with specific page targets in a 110-page screenplay; from <em>Save the Cat!</em> (2005). Page numbers are not suggestions but the structural argument.</p>
+    <ol class="vogler-list">
+      <li><strong>Opening Image (p.1).</strong> A single visual that establishes tone, mood, and starting state of the protagonist's world; will be answered by the Final Image.</li>
+      <li><strong>Theme Stated (~p.5).</strong> Someone, often offhandedly, articulates the moral question or controlling idea that the film will prove.</li>
+      <li><strong>Set-Up (pp.1–10).</strong> The "before" picture: protagonist's flaws, wants, and the things in their life that need fixing.</li>
+      <li><strong>Catalyst (~p.12).</strong> The inciting incident — a disruption from outside that breaks the status quo.</li>
+      <li><strong>Debate (pp.12–25).</strong> The protagonist hesitates, weighing whether to engage the catalyst; the act's question is "should I?"</li>
+      <li><strong>Break Into Two (~p.25).</strong> Active commitment: the protagonist crosses the threshold into the upside-down world of Act Two.</li>
+      <li><strong>B Story (~p.30).</strong> A secondary plot — typically a relationship — introduces the theme through a different lens.</li>
+      <li><strong>Fun and Games (pp.30–55).</strong> The "promise of the premise": the trailer scenes, the new situation explored at its most appealing.</li>
+      <li><strong>Midpoint (~p.55).</strong> A false victory or false defeat that raises the stakes and turns the protagonist's external journey into an internal one.</li>
+      <li><strong>Bad Guys Close In (pp.55–75).</strong> External antagonists tighten and internal flaws compound; the team frays.</li>
+      <li><strong>All Is Lost (~p.75).</strong> The lowest external point — a "whiff of death," often the death of someone or something that mattered.</li>
+      <li><strong>Dark Night of the Soul (pp.75–85).</strong> The lowest internal point: the protagonist sits with the wreckage and confronts the lesson the B Story has been teaching.</li>
+      <li><strong>Break Into Three (~p.85).</strong> Synthesis: A and B stories combine, the protagonist finds the answer, and acts decisively.</li>
+      <li><strong>Finale (pp.85–110).</strong> The protagonist applies the lesson, defeats the antagonist, and dismantles the world built in Act One.</li>
+      <li><strong>Final Image (~p.110).</strong> A visual rhyme with the Opening Image showing how far things have moved.</li>
+    </ol>
     <p class="what"><strong>Solves:</strong> Speed and teachability. Producers and writers can compare a draft against the sheet in a single read-through, which makes it useful as a development triage tool.</p>
     <p class="what"><strong>Sacrifices:</strong> Page-count rigidity is famously the source of mid-2010s "all studio films feel the same" complaints. Snyder's "All Is Lost / whiff of death" flattens the Ordeal-then-Resurrection sequence into a single dip, losing the two-death structure both Campbell and Vogler emphasize.</p>
   </div>
 
   <div class="framework">
     <h3>John Yorke's <em>Into the Woods</em> five-act model</h3>
-    <p>From his 2013 book. Yorke argues that all stories share a single underlying shape because they mirror the cognitive process by which humans assimilate new information: encounter, explore, assimilate. Five turning points instead of three. Roughly: Act 1 establishes a flawed protagonist in a flawed world; Act 2 confronts them with the inverse; Act 3 forces a midpoint reckoning; Act 4 escalates the cost; Act 5 resolves through transformation.</p>
+    <p>From his 2013 book. Yorke argues that all stories share a single underlying shape because they mirror the cognitive process by which humans assimilate new information: encounter, explore, assimilate. Five acts instead of three, with the protagonist confronting their opposite at the midpoint.</p>
+    <ol class="vogler-list">
+      <li><strong>Act One — Status Quo &amp; Inciting Incident.</strong> The protagonist is shown in a flawed equilibrium; an external event punctures it and surfaces an unconscious need beneath the conscious want.</li>
+      <li><strong>Act Two — Awakening &amp; Crossing the Threshold.</strong> The protagonist commits to the journey, encountering experiences that begin to invert their assumptions about themselves and the world.</li>
+      <li><strong>Act Three — Midpoint Reversal.</strong> A central reckoning — typically a confrontation with the opposite of what the protagonist thought they wanted — exposes the deeper truth they have been avoiding.</li>
+      <li><strong>Act Four — Confrontation &amp; Apparent Defeat.</strong> Costs escalate; the protagonist's old strategies fail catastrophically, producing a symbolic death and forcing surrender of the false self.</li>
+      <li><strong>Act Five — Resolution &amp; Return.</strong> The protagonist accepts the lesson, acts on the new truth, and re-integrates a transformed self into the world — the cognitive cycle (encounter → explore → assimilate) completes.</li>
+    </ol>
     <p class="what"><strong>Solves:</strong> Recovers the cognitive/psychological grounding of structure that beat-sheet culture has obscured. Yorke's argument is that structure is not arbitrary scaffolding but a description of how change actually happens in characters — and therefore prescription is fine if you understand <em>why</em>.</p>
     <p class="what"><strong>Sacrifices:</strong> Less directly tied to mythic content than Campbell-Vogler; doesn't supply specific scene types. More of a meta-structural argument than a writing-room toolkit.</p>
   </div>
 
   <div class="framework">
     <h3>Robert McKee's <em>Story</em> principles</h3>
-    <p>From his 1997 book. McKee's skeleton: <strong>Inciting Incident</strong> → <strong>Progressive Complications</strong> (a series of conflicts of escalating intensity that pass points-of-no-return) → <strong>Crisis</strong> (a forced choice between irreconcilable goods or lesser evils) → <strong>Climax</strong> (the choice executed; story value reverses) → <strong>Resolution</strong>. Above all sits the <strong>Controlling Idea</strong>, a one-sentence statement of cause and effect that the climax proves.</p>
+    <p>From his 1997 book. McKee's five-element skeleton, framed as the consequence of a one-sentence <strong>Controlling Idea</strong> — the cause-and-effect statement the climax must prove.</p>
+    <ol class="vogler-list">
+      <li><strong>Inciting Incident.</strong> An event upsets the protagonist's life equilibrium and triggers conscious desire — the gap between expectation and result that starts the story.</li>
+      <li><strong>Progressive Complications.</strong> A rising sequence of conflicts in which the protagonist's actions provoke increasingly large reactions, each crossing a point of no return.</li>
+      <li><strong>Crisis.</strong> The protagonist confronts a forced decision between irreconcilable goods (or lesser evils) — the moment that defines them by what they choose.</li>
+      <li><strong>Climax.</strong> The chosen action is taken, story value reverses, and the controlling idea is proven through outcome.</li>
+      <li><strong>Resolution.</strong> Remaining material is dispensed with — subplots tied off, new equilibrium shown, audience released.</li>
+    </ol>
     <p class="what"><strong>Solves:</strong> Forces the writer to articulate what the story <em>is about</em> — the controlling idea — before structuring scenes. Treats structure as the consequence of a moral/dramatic argument rather than a template into which an idea is poured.</p>
     <p class="what"><strong>Sacrifices:</strong> Not a stage map; doesn't supply Campbell-style mythic content. Can lean toward arch, "well-made-play" geometry that under-serves stories of stasis, ambiguity, or non-Western temporality.</p>
   </div>
 
   <div class="framework">
     <h3>John Truby's 22 steps</h3>
-    <p>From <em>The Anatomy of Story</em> (2007). Truby's sequence emphasizes moral and psychological cause and effect: Self-revelation, need, and desire → Ghost and story world → Weakness and need → Inciting event → Desire → Ally or allies → Opponent and/or mystery → Fake-ally opponent → First revelation and decision → Plan → Opponent's plan and main counterattack → Drive → Attack by ally → Apparent defeat → Second revelation and decision → Audience revelation → Third revelation and decision → Gate, gauntlet, visit to death → Battle → Self-revelation → Moral decision → New equilibrium.</p>
+    <p>From <em>The Anatomy of Story</em> (2007). Truby's sequence emphasizes moral and psychological cause and effect, treating opponents as designed extensions of the protagonist's weakness rather than external obstacles.</p>
+    <ol class="vogler-list">
+      <li><strong>Self-revelation, need, and desire.</strong> What the protagonist will eventually discover about themselves, the moral/psychological need that change will address, and the conscious goal they will pursue.</li>
+      <li><strong>Ghost and story world.</strong> The wound from the past that haunts the protagonist, and the world that physically and morally embodies their stuckness.</li>
+      <li><strong>Weakness and need.</strong> The protagonist's central flaw and the corresponding moral and psychological lack — what they must overcome internally.</li>
+      <li><strong>Inciting event.</strong> The external trigger that disrupts the protagonist's life and produces a desire requiring action.</li>
+      <li><strong>Desire.</strong> The specific external goal the protagonist commits to pursuing; what the audience tracks as the spine of the plot.</li>
+      <li><strong>Ally or allies.</strong> Figures who join the protagonist, mirror or test their values, and reveal aspects of the protagonist by contrast.</li>
+      <li><strong>Opponent and/or mystery.</strong> The antagonist who wants the same goal — competing with the protagonist for it — or a mystery concealing the true antagonist.</li>
+      <li><strong>Fake-ally opponent.</strong> A character who appears to support the protagonist but secretly serves the opposition; complicates trust and forces sharper reading of motive.</li>
+      <li><strong>First revelation and decision: changed desire and motive.</strong> New information shifts what the protagonist wants and why; the goal evolves.</li>
+      <li><strong>Plan.</strong> The protagonist's strategy for reaching the goal — usually flawed in ways tied to their weakness.</li>
+      <li><strong>Opponent's plan and main counterattack.</strong> The opposition's strategy is revealed and executed, putting the protagonist on the defensive.</li>
+      <li><strong>Drive.</strong> A series of intensifying actions by the protagonist toward the goal; the plot's escalating engine.</li>
+      <li><strong>Attack by ally.</strong> An ally challenges the protagonist's methods or morality, forcing self-examination at high cost.</li>
+      <li><strong>Apparent defeat.</strong> The protagonist hits bottom — the goal looks lost, the plan has failed.</li>
+      <li><strong>Second revelation and decision: obsessive drive, changed desire and motive.</strong> From defeat the protagonist gains new insight and recommits with greater clarity and intensity.</li>
+      <li><strong>Audience revelation.</strong> Information disclosed to the audience (often before the protagonist) that reframes earlier events — frequently exposing the fake-ally opponent.</li>
+      <li><strong>Third revelation and decision.</strong> A final piece of self- or world-knowledge that prepares the protagonist for the climactic confrontation.</li>
+      <li><strong>Gate, gauntlet, visit to death.</strong> A symbolic threshold or compressed sequence in which the protagonist confronts their fear of annihilation.</li>
+      <li><strong>Battle.</strong> The final external confrontation between protagonist and opponent; the values at stake become explicit.</li>
+      <li><strong>Self-revelation.</strong> The protagonist understands the truth about themselves they could not see before — the moral and psychological climax.</li>
+      <li><strong>Moral decision.</strong> Acting on the self-revelation, the protagonist makes an irreversible ethical choice that demonstrates the change.</li>
+      <li><strong>New equilibrium.</strong> The protagonist's life settles into a new balance reflecting the changed self; the story's argument about how to live is set.</li>
+    </ol>
     <p class="what"><strong>Solves:</strong> Foregrounds the protagonist-opponent dialectic and the <em>moral</em> dimension. More attentive than Vogler to the antagonist's internal structure and to the protagonist's ethical change.</p>
     <p class="what"><strong>Sacrifices:</strong> High step count makes it intimidating as a generative tool; works better as a diagnostic/revision framework. Truby is explicitly arguing against "myth-as-template" in favor of organic character logic.</p>
   </div>
 
   <div class="framework">
     <h3>The Story Spine ("Once upon a time…")</h3>
-    <p>Eight prompts: <em>Once upon a time… / Every day… / But, one day… / Because of that… / Because of that… / Until finally… / And ever since then…</em> <strong>Origin: Kenn Adams</strong>, who developed it around 1991 at Freestyle Repertory Theater in New York as an improv/teaching tool. It traveled to Pixar via Rebecca Stockley of BATS Improv around 1997 and was popularized externally when Pixar story artist Emma Coats tweeted it as part of "Pixar's 22 Rules of Storytelling" in 2012. Not a Pixar invention — credit Kenn Adams.</p>
+    <p>Eight sentence-starter prompts. <strong>Origin: Kenn Adams</strong>, who developed it around 1991 at Freestyle Repertory Theater in New York as an improv/teaching tool. It traveled to Pixar via Rebecca Stockley of BATS Improv around 1997 and was popularized externally when Pixar story artist Emma Coats tweeted it as part of "Pixar's 22 Rules of Storytelling" in 2012. Not a Pixar invention — credit Kenn Adams.</p>
+    <ol class="vogler-list">
+      <li><strong>Once upon a time…</strong> Establish the protagonist and the initial world — who, where, when.</li>
+      <li><strong>Every day…</strong> Describe the routine equilibrium that will be disrupted; the status quo.</li>
+      <li><strong>But, one day…</strong> The disruption arrives — the inciting incident that breaks routine.</li>
+      <li><strong>Because of that…</strong> The first consequence — the protagonist responds, and the response generates new pressure.</li>
+      <li><strong>Because of that…</strong> Compounding consequence — actions cascade, each one forced by the previous.</li>
+      <li><strong>Because of that…</strong> Continued cascade, building toward maximum pressure or the central crisis.</li>
+      <li><strong>Until finally…</strong> The climactic event — the resolution of the cascading pressure.</li>
+      <li><strong>And ever since then…</strong> The new equilibrium — what the world looks like after, the moral or thematic residue.</li>
+    </ol>
     <p class="what"><strong>Solves:</strong> Maximally compressed cause-and-effect spine; useful for pitching, premise-testing, and teaching kids. Each "because of that" forces causal logic, which tends to flush out plot-by-coincidence.</p>
     <p class="what"><strong>Sacrifices:</strong> No interiority, no antagonist structure, no thematic articulation. Generates serviceable plot scaffolding but won't on its own produce a story with weight.</p>
   </div>
 
   <div class="framework">
     <h3>Kishōtenketsu</h3>
-    <p>Four-act narrative structure used across Chinese, Japanese, and Korean literary traditions: <strong>Ki</strong> (introduction) → <strong>Shō</strong> (development without major change) → <strong>Ten</strong> (twist — a new and often surprising element, the structural pivot) → <strong>Ketsu</strong> (reconciliation/conclusion drawing meaning from the juxtaposition of the previous three acts, not from one element defeating another).</p>
+    <p>Four-act narrative structure used across Chinese, Japanese, and Korean literary traditions; meaning emerges from juxtaposition rather than from one element defeating another.</p>
+    <ol class="vogler-list">
+      <li><strong>Ki (起) — Introduction.</strong> Characters, setting, and situation are established without conflict; the audience is given the world as it stands.</li>
+      <li><strong>Shō (承) — Development.</strong> The introduced situation is elaborated and deepened — relationships, details, atmosphere — but no fundamental change is forced and no antagonist arrives.</li>
+      <li><strong>Ten (転) — Twist.</strong> A new and often unexpected element enters: a parallel image, a shift in perspective, an apparently unrelated event. This is the structural pivot, but not a confrontation.</li>
+      <li><strong>Ketsu (結) — Conclusion.</strong> Meaning emerges from the relationship between the first three acts — particularly the resonance between Shō and Ten — without one element defeating another.</li>
+    </ol>
     <p class="what"><strong>Solves:</strong> A working narrative structure that does not require conflict to generate momentum. Essential for stories of contemplation, juxtaposition, atmosphere, slice-of-life, and many forms of non-Western storytelling that the Campbell/Vogler frame either misreads or dismisses as plotless. Visible in Studio Ghibli films, four-panel manga (yonkoma), and much classical Chinese poetry.</p>
     <p class="what"><strong>Sacrifices:</strong> Less immediately legible to audiences trained on confrontational plot; the Ten (twist) is doing structural work that Western viewers can experience as arbitrary if they're waiting for an antagonist. Doesn't generate the cathartic shape that conflict-driven structures deliver — a feature, not a bug, but a different feature.</p>
   </div>
 
-  <a class="back-to-top" href="#top">↑ Back to top</a>
+  <a class="back-to-top" href="#contents">↑ Back to contents</a>
 </section>
 
 <hr class="section-divider">
@@ -868,7 +960,7 @@
     </li>
   </ul>
 
-  <a class="back-to-top" href="#top">↑ Back to top</a>
+  <a class="back-to-top" href="#contents">↑ Back to contents</a>
 </section>
 
 <hr class="section-divider">
@@ -907,7 +999,7 @@
     </li>
   </ul>
 
-  <a class="back-to-top" href="#top">↑ Back to top</a>
+  <a class="back-to-top" href="#contents">↑ Back to contents</a>
 </section>
 
 <hr class="section-divider">
@@ -930,12 +1022,12 @@
     <li>John Truby, <em>The Anatomy of Story: 22 Steps to Becoming a Master Storyteller</em>, Faber and Faber, 2007. ISBN 978-0-86547-951-7. In print; widely stocked.</li>
   </ol>
 
-  <a class="back-to-top" href="#top">↑ Back to top</a>
+  <a class="back-to-top" href="#contents">↑ Back to contents</a>
 </section>
 
 <footer class="page-footer">
   <p>Set in Iowan Old Style with system fallbacks. No third-party fonts, no analytics, no tracking. Source links verified against live HTTP responses at build time; offline-only resources catalogued in End Notes.</p>
-  <p>License: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a> · <a href="https://github.com/mumblequatch/260427_heros-journey-reference" id="repo-link-footer" target="_blank" rel="noopener noreferrer">Repository</a> · <a href="#top">Back to top</a></p>
+  <p>License: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a> · <a href="https://github.com/mumblequatch/260427_heros-journey-reference" id="repo-link-footer" target="_blank" rel="noopener noreferrer">Repository</a> · <a href="#contents">Back to contents</a></p>
 </footer>
 
 </main>
@@ -944,26 +1036,6 @@
 <!-- ============================================================ -->
 <!-- Mobile nav toggle                                            -->
 <!-- ============================================================ -->
-<script>
-(function () {
-  // ---- Mobile nav toggle ----
-  var toggle = document.querySelector('.nav-toggle');
-  var list = document.getElementById('nav-list');
-  if (toggle && list) {
-    toggle.addEventListener('click', function () {
-      var open = list.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    list.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A' && window.innerWidth <= 880) {
-        list.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-})();
-</script>
 
 </body>
 </html>
