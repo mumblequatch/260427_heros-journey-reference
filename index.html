@@ -1,0 +1,969 @@
+<!doctype html>
+<!--
+  Hero's Journey Reference
+  ------------------------
+  Single self-contained page. No build step.
+
+  REPO STRUCTURE
+    /index.html        ← this file
+    /README.md         ← short repo notes (optional)
+
+  DEPLOY (GitHub Pages)
+    Settings → Pages → Build and deployment → Source: Deploy from a branch → main / (root) → Save.
+    The page will live at https://<user>.github.io/<repo>/.
+
+  LOCAL USE
+    Works fully when opened directly via file:// — no server required.
+
+  EDITING
+    All content is inline. To update a section, edit the corresponding <section>.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A reference document on Joseph Campbell's Hero's Journey, Vogler's screenwriting adaptation, and their successors and alternatives — with verified sources and a deliberately-omitted list.">
+<meta name="color-scheme" content="light dark">
+<title>The Hero's Journey — A Reference</title>
+<style>
+  :root {
+    --bg: #fbfaf6;
+    --bg-soft: #f3f1ea;
+    --rule: #d8d2c1;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a48;
+    --ink-faint: #6b6862;
+    --accent: #6b2a1e;
+    --accent-soft: #a8473b;
+    --serif: "Iowan Old Style", "Palatino", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+    --measure: 65ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15141a;
+      --bg-soft: #1f1d27;
+      --rule: #312f3a;
+      --ink: #ece8dd;
+      --ink-soft: #b9b4a6;
+      --ink-faint: #8a8478;
+      --accent: #d99989;
+      --accent-soft: #b87366;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 1.2rem; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection { background: var(--accent-soft); color: var(--bg); }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (max-width: 880px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  /* === Sidebar nav === */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    padding: 2.5rem 1.25rem 2rem 2rem;
+    border-right: 1px solid var(--rule);
+    overflow-y: auto;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 880px) {
+    .sidebar {
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 1.25rem;
+    }
+    .nav-toggle { display: block; }
+    .nav-list { display: none; margin-top: 0.75rem; }
+    .nav-list.is-open { display: block; }
+  }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+  }
+  .nav-title {
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    font-size: 0.75rem;
+    margin: 0 0 0.75rem;
+    text-transform: lowercase;
+  }
+  .nav-list { list-style: none; padding: 0; margin: 0; }
+  .nav-list li { margin: 0; padding: 0.18rem 0; }
+  .nav-list a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-list a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .nav-list .nav-num {
+    display: inline-block;
+    width: 1.6em;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* === Main column === */
+  main {
+    padding: 2.5rem 2rem 6rem;
+    max-width: calc(var(--measure) + 4rem);
+  }
+  @media (max-width: 880px) {
+    main { padding: 1.5rem 1.25rem 4rem; }
+  }
+
+  header.page-header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  header.page-header h1 {
+    font-size: 2.2rem;
+    line-height: 1.15;
+    margin: 0 0 0.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  header.page-header .subtitle {
+    color: var(--ink-soft);
+    margin: 0 0 1rem;
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+  }
+  .meta-row a { color: var(--accent); text-decoration: none; }
+  .meta-row a:hover { text-decoration: underline; }
+
+  /* === Body content === */
+  section {
+    margin: 3.5rem 0;
+    scroll-margin-top: 1rem;
+  }
+  section:first-of-type { margin-top: 0; }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0 0 0.4rem;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+  }
+  h2 .section-num {
+    color: var(--ink-faint);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    margin-right: 0.45em;
+  }
+  h3 {
+    font-size: 1.12rem;
+    margin: 1.8rem 0 0.4rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  h4 {
+    font-size: 1rem;
+    margin: 1.2rem 0 0.3rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+  }
+  p { margin: 0.7rem 0; }
+  p, li { max-width: var(--measure); }
+  .lede {
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0.4rem 0 1.5rem;
+    max-width: var(--measure);
+  }
+  hr.section-divider {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 3rem 0;
+  }
+
+  ol, ul { padding-left: 1.5rem; }
+  ol li, ul li { margin: 0.45rem 0; }
+
+  .stage-list { list-style: none; padding: 0; counter-reset: stage; }
+  .stage-list > li {
+    counter-increment: stage;
+    margin: 1.4rem 0;
+    padding-left: 3.2rem;
+    position: relative;
+    max-width: var(--measure);
+  }
+  .stage-list > li::before {
+    content: counter(stage, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+  .stage-list .stage-name {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  .stage-list .stage-body {
+    color: var(--ink);
+    margin: 0;
+  }
+  .phase-label {
+    font-variant: small-caps;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    font-size: 0.78rem;
+    font-family: var(--sans);
+    margin: 2rem 0 0.4rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--rule);
+    max-width: var(--measure);
+  }
+  .phase-label:first-of-type { margin-top: 0.5rem; }
+
+  .vogler-list { list-style: none; padding: 0; counter-reset: vogler; }
+  .vogler-list > li {
+    counter-increment: vogler;
+    margin: 1rem 0;
+    padding-left: 2.6rem;
+    position: relative;
+    max-width: var(--measure);
+  }
+  .vogler-list > li::before {
+    content: counter(vogler) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .example {
+    margin: 1.8rem 0;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .example:last-child { border-bottom: none; }
+  .example h3 { margin-top: 0; }
+  .example .credits {
+    font-style: italic;
+    color: var(--ink-faint);
+    font-size: 0.92rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .framework {
+    margin: 1.6rem 0;
+    padding: 1.1rem 1.25rem;
+    background: var(--bg-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 2px;
+  }
+  .framework h3 { margin-top: 0; }
+  .framework .what {
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 0.5rem 0 0.3rem;
+  }
+
+  .reading-list { list-style: none; padding: 0; }
+  .reading-list > li {
+    margin: 1.1rem 0;
+    padding-left: 1.6rem;
+    position: relative;
+    max-width: var(--measure);
+  }
+  .reading-list > li::before {
+    content: "❧";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+  }
+  .reading-list .res-cite { font-weight: 600; }
+  .status {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: 0.12em;
+  }
+  .status-online {
+    background: rgba(107, 42, 30, 0.1);
+    color: var(--accent);
+  }
+  .status-offline {
+    background: var(--bg-soft);
+    color: var(--ink-faint);
+    border: 1px solid var(--rule);
+  }
+
+  .omit-list { list-style: none; padding: 0; }
+  .omit-list > li {
+    margin: 1.2rem 0;
+    padding: 0.9rem 1.1rem;
+    background: var(--bg-soft);
+    border-left: 3px solid var(--ink-faint);
+    border-radius: 2px;
+    max-width: var(--measure);
+  }
+  .omit-list .omit-name { font-weight: 700; display: block; margin-bottom: 0.3rem; }
+
+  .end-notes { list-style: none; padding: 0; counter-reset: endnote; }
+  .end-notes > li {
+    counter-increment: endnote;
+    margin: 1.1rem 0;
+    padding-left: 2.5rem;
+    position: relative;
+    max-width: var(--measure);
+    font-size: 0.96rem;
+  }
+  .end-notes > li::before {
+    content: counter(endnote) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  a.ext {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(168, 71, 59, 0.35);
+  }
+  a.ext:hover { border-bottom-color: var(--accent); }
+  a.ext::after {
+    content: " ↗";
+    font-size: 0.8em;
+    color: var(--accent-soft);
+    letter-spacing: -0.05em;
+  }
+
+  .back-to-top {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--ink-faint);
+  }
+  .back-to-top:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  footer.page-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+  footer.page-footer a { color: var(--accent); }
+
+  /* === Print styles === */
+  @media print {
+    @page { margin: 1.6cm; }
+    html { scroll-behavior: auto; }
+    body { background: white; color: black; font-size: 11pt; }
+    .layout { display: block; max-width: none; }
+    .sidebar { display: none; }
+    main { padding: 0; max-width: none; }
+    .nav-toggle, .back-to-top { display: none !important; }
+    section { break-inside: avoid-page; margin: 1.5rem 0; }
+    h2 { break-after: avoid-page; }
+    .example, .framework, .reading-list > li, .omit-list > li, .end-notes > li {
+      break-inside: avoid-page;
+    }
+    a.ext { color: black; border-bottom: none; }
+    a.ext::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+    .framework, .omit-list > li { background: none; border-left-color: #888; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<aside class="sidebar" aria-label="Section navigation">
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">Sections ▾</button>
+  <p class="nav-title">contents</p>
+  <ol class="nav-list" id="nav-list">
+    <li><a href="#stages"><span class="nav-num">1.</span>The Hero's Journey</a></li>
+    <li><a href="#use-and-misuse"><span class="nav-num">2.</span>Use &amp; Misuse</a></li>
+    <li><a href="#successful-examples"><span class="nav-num">3.</span>Successful Examples</a></li>
+    <li><a href="#unsuccessful-examples"><span class="nav-num">4.</span>Unsuccessful Examples</a></li>
+    <li><a href="#alternatives"><span class="nav-num">5.</span>Adaptations &amp; Alternatives</a></li>
+    <li><a href="#further-reading"><span class="nav-num">6.</span>Further Reading</a></li>
+    <li><a href="#deliberately-omitted"><span class="nav-num">7.</span>Deliberately Omitted</a></li>
+    <li><a href="#end-notes"><span class="nav-num">8.</span>End Notes</a></li>
+  </ol>
+</aside>
+
+<main id="top">
+
+<header class="page-header">
+  <h1>The Hero's Journey</h1>
+  <p class="subtitle">A reference: Campbell's monomyth, Vogler's adaptation, and the structures that argue with both.</p>
+  <div class="meta-row">
+    <span>Last updated <time datetime="2026-04-27">27 April 2026</time></span>
+    <span>·</span>
+    <a href="#" id="repo-link" rel="noopener">Source repository</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- 1. STAGES                                                    -->
+<!-- ============================================================ -->
+<section id="stages">
+  <h2><span class="section-num">1.</span>The Hero's Journey — Stages and Phases</h2>
+  <p class="lede">Joseph Campbell's seventeen-stage monomyth (<em>The Hero with a Thousand Faces</em>, 1949), and Christopher Vogler's twelve-stage screenwriting adaptation (<em>The Writer's Journey</em>, 1992), with a note on what gets lost in translation.</p>
+
+  <h3>Campbell's seventeen stages</h3>
+
+  <p class="phase-label">Departure</p>
+  <ol class="stage-list">
+    <li>
+      <span class="stage-name">The Call to Adventure</span>
+      <p class="stage-body">The hero, going about ordinary life, encounters a herald or disturbance — a messenger, a chance event, a felt absence — that pulls awareness toward an unknown region. Psychologically the first signal that the existing self-conception is no longer adequate; mythologically, destiny summoning the protagonist out of the secular into the numinous.</p>
+    </li>
+    <li>
+      <span class="stage-name">Refusal of the Call</span>
+      <p class="stage-body">The hero hesitates, declines, or actively flees. Campbell treats refusal not as cowardice but as a real and dangerous condition: it can ossify into a life of futility — "boredom, hard work, or culture" — because the psyche has been told the truth and is now denying it. The energy refused becomes obstacle.</p>
+    </li>
+    <li>
+      <span class="stage-name">Supernatural Aid</span>
+      <p class="stage-body">Once the hero commits, a protective figure (often an old crone or wizened man) appears with amulets, advice, or a token. This represents the benign, supportive contents of the unconscious — the wisdom that surfaces precisely when the conscious ego accepts the task. Virgil to Dante; the fairy godmother.</p>
+    </li>
+    <li>
+      <span class="stage-name">The Crossing of the First Threshold</span>
+      <p class="stage-body">The hero passes the guardian of the known world and enters the realm of adventure — a zone where the rules differ. The threshold guardian both blocks and protects; passing requires combat, conciliation, or being swallowed. The symbolic moment of leaving the safety of the ego's familiar ground.</p>
+    </li>
+    <li>
+      <span class="stage-name">Belly of the Whale</span>
+      <p class="stage-body">The hero is swallowed into the unknown — sometimes literally (Jonah, Pinocchio), sometimes by descent into night, sleep, or annihilation of identity. The old self appears to die. A self-annihilation that prefigures rebirth: the hero, instead of conquering the threshold, allows it to consume them.</p>
+    </li>
+  </ol>
+
+  <p class="phase-label">Initiation</p>
+  <ol class="stage-list" start="6" style="counter-reset: stage 5;">
+    <li>
+      <span class="stage-name">The Road of Trials</span>
+      <p class="stage-body">Inside the new world the hero faces a sequence of tests, each tailored to a weakness or unfinished aspect of the personality. Campbell emphasizes that the hero usually has supernatural assistance through these — the assistance picked up at stages 3 and 4 — but must do the work. The long middle of the journey, the catalogue of dragons.</p>
+    </li>
+    <li>
+      <span class="stage-name">The Meeting with the Goddess</span>
+      <p class="stage-body">The hero encounters an unconditionally loving feminine figure — the totality of what can be known, the World Soul, the queen-mother-bride. Campbell calls this the "ultimate adventure" of mystic union. Psychologically: reconciliation with the feminine principle and with the source of life itself.</p>
+    </li>
+    <li>
+      <span class="stage-name">Woman as the Temptress</span>
+      <p class="stage-body">A symbolic stage, not a literal woman: the hero is tempted by the lure of the flesh, by material comfort, by anything that fixes desire on the surface and away from the pursuit. Campbell uses this to dramatize the revulsion at finite, material existence that the spiritual seeker must work through. The "temptress" is whatever pulls the hero off the path.</p>
+    </li>
+    <li>
+      <span class="stage-name">Atonement with the Father</span>
+      <p class="stage-body">The hero confronts and reconciles with the figure that holds ultimate power over their life — the father, the king, the demanding god. "At-one-ment" is Campbell's pun: the hero must drop the self that is being judged and merge with the judging principle. The most psychologically charged stage, mapping onto initiation rites in tribal cultures.</p>
+    </li>
+    <li>
+      <span class="stage-name">Apotheosis</span>
+      <p class="stage-body">Having reconciled with ultimate authority, the hero achieves a divine state — knowledge that transcends opposites (life/death, male/female, being/non-being). Campbell describes this as god-realization or Buddha-mind. Rest before the final task.</p>
+    </li>
+    <li>
+      <span class="stage-name">The Ultimate Boon</span>
+      <p class="stage-body">The hero attains the goal of the quest — the elixir, the grail, the fire, the bride, the knowledge. Campbell stresses that the boon is usually something the hero already had access to: the journey reveals it rather than acquires it. The boon is consciousness expanded.</p>
+    </li>
+  </ol>
+
+  <p class="phase-label">Return</p>
+  <ol class="stage-list" start="12" style="counter-reset: stage 11;">
+    <li>
+      <span class="stage-name">Refusal of the Return</span>
+      <p class="stage-body">Having achieved the boon, the hero may not want to come back. The world of ordinary humans seems unreal, and the bliss of the transcendent realm is preferable. Many myths end here, with the hero remaining among the gods.</p>
+    </li>
+    <li>
+      <span class="stage-name">The Magic Flight</span>
+      <p class="stage-body">If the hero must return, and the boon was taken against the will of its guardians, escape becomes a frantic, magical chase — Jason fleeing Colchis is canonical. The unconscious does not give up its treasures easily; the conscious mind must actively carry them out.</p>
+    </li>
+    <li>
+      <span class="stage-name">Rescue from Without</span>
+      <p class="stage-body">Sometimes the hero needs help getting back; the world must reach in and pull them out. This compensates for the hero's reluctance or exhaustion. Campbell observes that society itself — the community awaiting the boon — is part of the mechanism that completes the journey.</p>
+    </li>
+    <li>
+      <span class="stage-name">The Crossing of the Return Threshold</span>
+      <p class="stage-body">The hero must re-enter the ordinary world carrying the boon, and the boon must be translated into terms the ordinary world can receive. The problem of communication: the transcendent must be made intelligible without being trivialized.</p>
+    </li>
+    <li>
+      <span class="stage-name">Master of the Two Worlds</span>
+      <p class="stage-body">The hero attains the freedom to move between inner and outer realms without confusion — competent in mundane life, rooted in transcendent awareness. Campbell associates this with figures like Christ and the Buddha, who function in time while resting in eternity.</p>
+    </li>
+    <li>
+      <span class="stage-name">Freedom to Live</span>
+      <p class="stage-body">The fully integrated hero acts without anxiety about past or future, without clinging or dread of death. Not escape from life but absolute presence in it — the boon's social form. Campbell ends the monomyth here: liberated to act.</p>
+    </li>
+  </ol>
+
+  <h3>Vogler's twelve stages</h3>
+  <p>Vogler's <em>The Writer's Journey</em> (1992; 3rd ed. 2007), itself derived from his 1985 Disney memo. A scene typology for screenwriters rather than a comparative-mythology pattern.</p>
+  <ol class="vogler-list">
+    <li><strong>Ordinary World.</strong> The hero is shown in their everyday context before the story disturbs it. Vogler insists this stage is structurally essential — it lets the audience identify with the hero and gives the eventual special world something to contrast with.</li>
+    <li><strong>Call to Adventure.</strong> A problem, challenge, or invitation pierces the ordinary world. Functionally the inciting incident; Vogler treats it as a clear story beat rather than Campbell's diffuse summons.</li>
+    <li><strong>Refusal of the Call.</strong> The hero balks — out of fear, duty, prior commitment, or sense of inadequacy. Vogler keeps this stage because it humanizes the hero, but allows it to be brief or implicit.</li>
+    <li><strong>Meeting with the Mentor.</strong> The hero connects with a figure (Obi-Wan, Yoda, Mr. Miyagi, Glinda) who supplies wisdom, equipment, training, or confidence. Vogler creates this stage by consolidating Campbell's Supernatural Aid, parts of Atonement with the Father, and the broader wise-figure archetype.</li>
+    <li><strong>Crossing the Threshold.</strong> The hero commits and enters the special world. Vogler stresses this as the act-one break: the door closes behind the protagonist, and the rules now change.</li>
+    <li><strong>Tests, Allies, and Enemies.</strong> In the special world the hero learns who can be trusted, who is the opposition, and how the new rules work. The early-second-act zone of orientation and team-building.</li>
+    <li><strong>Approach to the Inmost Cave.</strong> Preparation for the central ordeal: planning, regrouping, last-minute training, fear-management. The run-up to the midpoint.</li>
+    <li><strong>Ordeal.</strong> A direct confrontation with death — literal, symbolic, or psychological. Vogler argues the hero must "taste death" so that rebirth is earned; this is the midpoint crisis, distinct from the climax.</li>
+    <li><strong>Reward (Seizing the Sword).</strong> Having survived, the hero takes possession of the prize — knowledge, power, reconciliation, an artifact, self-knowledge. The danger here is premature relaxation or being seduced by the reward itself.</li>
+    <li><strong>The Road Back.</strong> The hero turns toward home, often pursued. Vogler frames this as the act-two break: re-commitment in the face of consequences from the ordeal.</li>
+    <li><strong>Resurrection.</strong> A climactic, final test — a second confrontation with death — in which the hero applies what was learned and is transformed. The third-act climax proper.</li>
+    <li><strong>Return with the Elixir.</strong> The hero returns to the ordinary world bearing something — wisdom, love, freedom, a cure — that benefits the community. Without the elixir the journey has been mere wandering.</li>
+  </ol>
+
+  <h3>Where Campbell ≠ Vogler</h3>
+  <p>The headline number — 17 vs. 12 — understates how different the two projects are. Campbell was a comparative mythologist describing patterns observed across thousands of religious and folkloric texts; Vogler was a Disney story analyst building a working tool for evaluating screenplays. The frame shift bends the content in specific ways.</p>
+  <h4>What Vogler invents</h4>
+  <p>"Ordinary World" has no Campbell analogue — Campbell starts at the Call. Vogler adds it because screenwriters need an act-one establishing sequence to set up contrast and identification. "Tests, Allies, and Enemies" is also Vogler's invention, a single bucket covering the loose middle that Campbell distributes across the Road of Trials, Meeting with the Goddess, and Atonement.</p>
+  <h4>What Vogler consolidates</h4>
+  <p>"Meeting with the Mentor" absorbs Campbell's Supernatural Aid, parts of Atonement with the Father, and the broader wise-figure archetype, collapsing several mythic functions into one screenplay character. "Approach to the Inmost Cave" plus "Ordeal" repackage the Belly of the Whale and parts of Apotheosis into a single midpoint sequence with planning + crisis. "Resurrection" condenses the Magic Flight, Rescue from Without, and Crossing of the Return Threshold into one climactic scene.</p>
+  <h4>What Vogler quietly drops</h4>
+  <p>The two most psychologically charged Campbell stages disappear: <em>Woman as the Temptress</em> and <em>Atonement with the Father</em>. Vogler folds their narrative work into other beats — temptation migrates into the Ordeal or into a Shadow archetype; father-confrontation migrates into Mentor and the Ordeal/Resurrection. Also gone as discrete stages: Apotheosis, Refusal of the Return, Magic Flight, Rescue from Without, Master of the Two Worlds, and Freedom to Live. Vogler keeps the <em>return</em> but not the elaborate post-victory psychology Campbell describes.</p>
+  <h4>What this costs</h4>
+  <p>Translating descriptive mythology into prescriptive scene typology loses three things: (1) the centrality of <em>death of the self</em> — Belly of the Whale and Apotheosis as ego-dissolution events, not just suspense beats; (2) the post-boon difficulty — Refusal of the Return, Master of Two Worlds, the problem of integration after transformation; (3) the ambiguity of the feminine, where Campbell holds Goddess and Temptress in tension and Vogler simply elides it. What Vogler gains is teachability: any working writer can map a draft against his twelve stages in an afternoon, where Campbell's seventeen require interpretation.</p>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 2. USE AND MISUSE                                            -->
+<!-- ============================================================ -->
+<section id="use-and-misuse">
+  <h2><span class="section-num">2.</span>Use &amp; Misuse in Screenwriting</h2>
+  <p class="lede">From a seven-page Disney memo to a default outline in screenwriting software — and what got lost on the way.</p>
+
+  <p>Vogler wrote his 1985 Disney memo, "A Practical Guide to <em>The Hero with a Thousand Faces</em>," as an in-house seven-page document while a story analyst at the studio. It circulated samizdat-style around Hollywood, became, in his own phrase, "the <em>I have to have it</em> document of the season," and seeded story development on <em>The Lion King</em>, <em>Aladdin</em>, and others. Vogler expanded it into <em>The Writer's Journey</em> in 1992, with revised editions in 1998 and 2007. The book became a standard text in MFA programs and studio development offices.</p>
+
+  <p>Adoption begat formula. Blake Snyder's <em>Save the Cat!</em> (2005) repackaged Vogler-flavored structure into a fifteen-beat sheet keyed to specific page numbers in a 110-page screenplay. Beat-sheet culture spread through screenwriting software (Final Draft, Highland, Arc Studio, Plottr) that ships templates encoding Snyder's beats and Vogler's stages as default outlines. The result is a generation of scripts where development executives reflexively ask, "where's the All Is Lost moment?" and writers reverse-engineer toward beats rather than letting beats emerge from character.</p>
+
+  <p>The core misuse is <strong>conflating descriptive with prescriptive</strong>. Campbell observed a pattern across mythic texts; Vogler sketched a useful set of recurring scene types; Snyder turned them into a checklist. <em>That</em> sequence is the failure mode. As John Yorke argues throughout <em>Into the Woods</em> (2013), structure is a description of how human cognition processes change, not a recipe — and slavish beat-hitting produces stories that feel mechanical because the writer hasn't actually earned the emotional logic the beat is meant to express.</p>
+
+  <p>A second misuse is <strong>Hollywood-three-act / monomyth conflation</strong>. The three-act structure is a much older theatrical convention with deeper five-act roots, and it answers different questions than Campbell's monomyth, which is a cycle of inner transformation. Forcing Campbell into act-break geometry produces a hybrid that is neither rigorous mythology nor clean dramaturgy.</p>
+
+  <p>A third misuse is the <strong>gendered default</strong>. The Campbell-Vogler hero is implicitly a young man separating from the maternal world to confront a paternal authority and return with a boon. Maureen Murdock — a former student of Campbell's — wrote <em>The Heroine's Journey</em> (1990) precisely because she found that the monomyth as taught did not describe the women in her therapeutic practice; her stages center on healing the mother-daughter split and integrating wounded feminine identity, not on father-confrontation. Kim Hudson's <em>Virgin's Promise</em> (2009) makes a related move from a different angle — describing a structure of awakening into authentic self rather than departure-and-return.</p>
+
+  <p>Substantive critics from inside the screenwriting world include Robert McKee, who argues in <em>Story</em> (1997) that "controlling idea" and progressive complications matter more than any stage map, and John Yorke, whose five-act model is meant to recover the cognitive logic that beat sheets obscure. The honest position: Campbell-Vogler is a useful diagnostic tool when reading a draft and a dangerous tool when generating one.</p>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 3. SUCCESSFUL EXAMPLES                                       -->
+<!-- ============================================================ -->
+<section id="successful-examples">
+  <h2><span class="section-num">3.</span>Successful Examples</h2>
+  <p class="lede">Eight works where the structure works because the writer engaged with what it represents — not because they hit the beats.</p>
+
+  <article class="example">
+    <h3>Star Wars: A New Hope</h3>
+    <p class="credits">1977 · George Lucas</p>
+    <p>The canonical Vogler example, and it earns the slot because Lucas's engagement was conceptual before it was structural. Luke's Refusal of the Call works because the film already established the moisture farm as a real place with real obligations — Owen and Beru aren't obstacles, they're the texture of the Ordinary World. When Luke returns from the Jundland Wastes to find them dead, the Crossing of the First Threshold is not a beat, it's the only door left open. Obi-Wan as Mentor is structurally classical but tonally specific: he dies during the Approach, not the Ordeal, which forces Luke to enter the Inmost Cave (the Death Star) without the wisdom figure — a Campbell-true move that most imitators flinch on. The trench run reads as Atonement with the Father (the Force, not Vader yet) precisely because Luke turns off the targeting computer. The mechanism gives way to the inheritance.</p>
+  </article>
+
+  <article class="example">
+    <h3>The Matrix</h3>
+    <p class="credits">1999 · Lana and Lilly Wachowski</p>
+    <p>The Wachowskis read Campbell openly and built the film as a test case: can the monomyth survive being made literal? Neo's Ordinary World is already coded as wrong — the green-tinted office, the mirror that liquefies — so the Call to Adventure (the white rabbit, Trinity's whisper) reads as relief rather than disruption. The genius move is splitting the Mentor: Morpheus offers the framework, the Oracle undermines it. She tells Neo he is not the One, which is the film's actual Belly of the Whale — the structural promise gets revoked, and Neo has to choose to act as if it were true anyway. By the time the Resurrection happens (literal, in the hallway), the monomyth has been earned by the character's refusal to be passively delivered into it. Most slavish-Campbell films skip this loop; the Matrix makes it the spine.</p>
+  </article>
+
+  <article class="example">
+    <h3>Spirited Away</h3>
+    <p class="credits">2001 · Hayao Miyazaki</p>
+    <p>A useful counter-case because Miyazaki was openly skeptical of three-act structure and Campbell, yet Chihiro's arc is one of the cleanest Heroine's-Journey applications in cinema — closer to Maureen Murdock's reframe than Vogler's. The Ordinary World isn't established with safety; it's established with petulance, which makes the Threshold (the abandoned theme park) function as punishment-disguised-as-adventure. Yubaba steals her name: that's the Death of the False Self, not the Ordeal. The Boon is small and concrete — Chihiro remembers Haku's true name — and crucially she returns with no triumph, no recognition from the parents. The Return Threshold is the parents' obliviousness. Miyazaki refuses the closing celebration the form wants; the growth is internal and unwitnessed, which is the whole argument.</p>
+  </article>
+
+  <article class="example">
+    <h3>Beloved</h3>
+    <p class="credits">1987 novel · Toni Morrison</p>
+    <p>The Return phase as the entire novel. Sethe has already crossed the threshold — geographically out of slavery, out of the Sweet Home plantation — when the book begins, and the monomyth's normal forward motion is collapsed into a haunting. Beloved herself is the Refusal of Return made flesh: the dead daughter who will not let the living complete reintegration. Morrison uses the structural expectation against the reader. We keep waiting for Sethe to "come back" with a Boon, and the book's argument is that this is exactly what trauma forecloses. The community's intervention at the end — the women arriving to drive Beloved out — is the Crossing of the Return Threshold performed by people other than the hero, because Sethe alone cannot do it. That's a structural insight Campbell didn't have, and the book stages it as form.</p>
+  </article>
+
+  <article class="example">
+    <h3>Mad Max: Fury Road</h3>
+    <p class="credits">2015 · George Miller, Brendan McCarthy, Nico Lathouris</p>
+    <p>The monomyth is Furiosa's, not Max's, and Miller engineers the road-trip-as-Trials so each set piece advances her arc, not the protagonist-by-default's. Crossing the Threshold is the war rig's left turn off the Fury Road. The Goddess figure — her Vuvalini elders — appear at the Approach, and the film's deepest move is making the Meeting with the Goddess into the Ordeal itself: the Green Place doesn't exist. The thing she's been carrying the wives toward is gone. Most monomyth films cannot recover from a midpoint reveal that vacates the goal, but Miller uses it to force a structural inversion: the Return is the journey. Going back to the Citadel becomes the Road of Trials proper. The film argues that the form's symmetry — outbound and return — can be folded into a single line if the geography of the soul is rearranged at the right beat.</p>
+  </article>
+
+  <article class="example">
+    <h3>Russian Doll, Season 1</h3>
+    <p class="credits">2019 · Natasha Lyonne, Amy Poehler, Leslye Headland</p>
+    <p>Belly of the Whale literalized as time loop, and the show treats this as a structural commitment, not a gimmick. Nadia dies and resurfaces; the Ordeal is the form. What makes it work is that Lyonne refuses the Boon's traditional shape: the lesson isn't self-actualization, it's recognition of another. Alan's parallel loop transforms the monomyth from solo into duet, and the Return Threshold cannot be crossed alone — the finale's split reality, where each version of Nadia and Alan find the other across timelines, is the Atonement made structural. The supernatural-aid figures (Ruth, the homeless Horse) function less as guides than as proof that the Ordinary World was already porous. Eight episodes is the right length: any longer and the loop becomes a procedural, any shorter and the descent doesn't bottom out.</p>
+  </article>
+
+  <article class="example">
+    <h3>Pan's Labyrinth</h3>
+    <p class="credits">2006 · Guillermo del Toro</p>
+    <p>Del Toro fractures the monomyth across two registers — Ofelia's underworld trials and the partisan war — and refuses to confirm which is real. The three tasks Faun assigns are the Road of Trials in their cleanest form, but del Toro corrupts the structure on purpose: Ofelia fails the second task (eats the grape) and the consequence is real death, the fairies devoured. The Ordeal is not the Pale Man; it's her refusal of the final task, which Campbell would code as the Atonement with the Father (refusing Faun's command to spill innocent blood). She crosses the Return Threshold by dying, which is the film's structural argument: under fascism, the only return available is symbolic. The monomyth isn't decoration; it's the only language in which Ofelia's interior life can be told, because the realist register is being used to record her stepfather's atrocities.</p>
+  </article>
+
+  <article class="example">
+    <h3>Arrival</h3>
+    <p class="credits">2016 film · Eric Heisserer, from Ted Chiang's "Story of Your Life" (1998)</p>
+    <p>The Boon is a re-ordered relationship to time, which is the most literal expression of "elixir" in modern cinema. Heisserer's adaptation works because he reorganizes Chiang's story into a monomyth shape without resolving the time paradox — Louise's Call is linguistic (decode the heptapods), her Mentor is absent, her Threshold is the shell itself, and the Ordeal is comprehension. The Atonement with the Father gets translated into a confrontation with motherhood-already-known: she will choose to have the daughter she has already grieved. The Return is impossible in the conventional sense because she has not gone anywhere, and yet she returns transformed, with the Boon being the willingness to live the line forward knowing its end. The film argues that knowledge can be the dragon at the cave mouth.</p>
+  </article>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 4. UNSUCCESSFUL EXAMPLES                                     -->
+<!-- ============================================================ -->
+<section id="unsuccessful-examples">
+  <h2><span class="section-num">4.</span>Unsuccessful Examples</h2>
+  <p class="lede">Eight works where the structure was applied mechanically, fought the material, or arrived without earning its beats.</p>
+
+  <article class="example">
+    <h3>Eragon</h3>
+    <p class="credits">2006 · Stefen Fangmeier; screenplay Peter Buchman</p>
+    <p>The textbook negative example. Every Vogler beat is hit on schedule — Ordinary World (farm), Call (the egg), Refusal (briefly), Mentor (Brom), Threshold (leaving the village burned), Tests/Allies, Approach, Ordeal (Durza), Reward, Return — and none of them have interior weight because the film treats the structure as the content. Brom dies on cue at the Approach but the relationship was built in two scenes of exposition, so the death is informational rather than felt. The Refusal of the Call lasts roughly ninety seconds and contains no actual reluctance, just a delay before the next scene. The dragon Saphira goes from hatchling to adult in a single training montage so the bond, which is the only thing that could give the Ordeal stakes, is asserted not earned. The film proves the structure is inert without specificity.</p>
+  </article>
+
+  <article class="example">
+    <h3>Star Wars: The Rise of Skywalker</h3>
+    <p class="credits">2019 · J.J. Abrams, Chris Terrio</p>
+    <p>The Resurrection beat without the Ordeal earned. Rey's monomyth is restaged from A New Hope but the film won't sit in any of the descents long enough for them to register — the Cave on Ahch-To from the previous film established a real Inmost Cave question (Rey's parents, identity, lineage) and Rise of Skywalker resolves it by retcon (Palpatine's granddaughter) rather than by ordeal. The actual Atonement with the Father — confronting Palpatine — happens in a setting Rey has not earned her way to; Exegol arrives in act three as a logistical destination, not a psychological one. The film stages a Resurrection (Rey dies, is revived by Ben) but the death has been preceded by no genuine surrender of the false self, so the rebirth reads as plot mechanics. The monomyth is the screenplay's skeleton showing through the skin.</p>
+  </article>
+
+  <article class="example">
+    <h3>John Carter</h3>
+    <p class="credits">2012 · Andrew Stanton, Mark Andrews, Michael Chabon</p>
+    <p>Stanton's adaptation hits the beats with care — Threshold (Mars itself), Supernatural Aid (the medallion), Allies (the Tharks), Goddess (Dejah Thoris) — but the world is unrooted because the film won't commit to whether Mars is alien or allegorical. The Call to Adventure is mechanical (a transport stone), so Carter has no interior reason to stay; the Refusal of the Call therefore has nothing to push against, and the film replaces it with a backstory flashback (his dead family) that is delivered as data rather than discovered. The Belly of the Whale (the arena) is staged as spectacle but the threat is generic. Burroughs's pulp had a frank serial logic; Stanton tries to graft a monomyth onto it, and the joins show — every beat lands but nothing accumulates, because the structure is doing the work that worldbuilding should have done first.</p>
+  </article>
+
+  <article class="example">
+    <h3>The Snowman</h3>
+    <p class="credits">2017 · Tomas Alfredson; screenplay Peter Straughan, Hossein Amini, Søren Sveistrup</p>
+    <p>A particularly clean failure case because the director has stated publicly that 10–15% of the script wasn't shot, so the monomyth gets visibly skipped. Harry Hole has the contours of a wounded-detective hero — addiction as Ordinary World, the snowman killer as Call — but the film cuts between beats that don't connect, with subplots and characters (J.K. Simmons's role most notoriously) appearing and vanishing without structural function. The Ordeal lands without the Approach to set it up; the Reward is unintelligible because the antagonist's identity has not been earned by investigation. The lesson is structural: the monomyth's beats are load-bearing, not decorative — when production removes the connective tissue, what remains isn't a leaner version of the form, it's the form's negative space.</p>
+  </article>
+
+  <article class="example">
+    <h3>The Dark Tower</h3>
+    <p class="credits">2017 · Nikolaj Arcel et al.</p>
+    <p>King's source is an explicit anti-monomyth — the Gunslinger's quest is circular and corrupted — and the film flattens it into a standard Boy-Has-Powers-Discovers-Hero arc. Jake becomes the protagonist instead of Roland, which would be defensible if the adaptation had committed to a fresh Call/Threshold for him, but the film keeps Roland's mythology as set dressing. The Mentor function (Roland) is undercut because Roland's own arc — the original monomyth — has been amputated. The Ordeal (the Crimson King's tower) arrives in 95 minutes with no Tests or Allies phase, so the climax has no friends to lose. The structure is treating King's recursion as a bug to be fixed; the film proves that some source material was specifically built to resist the monomyth, and forcing it produces a scaffolding with nothing inside.</p>
+  </article>
+
+  <article class="example">
+    <h3>Mortal Engines</h3>
+    <p class="credits">2018 · Christian Rivers; screenplay Fran Walsh, Philippa Boyens, Peter Jackson</p>
+    <p>The screenwriters compress Reeve's first novel into a beat sheet and lose the book's actual structural pleasure, which is that Tom is not the hero — Hester is, and the novel earns her centrality slowly. The film designates Tom as the Vogler-protagonist, gives him a Refusal of the Call (briefly leaves the Traction City), and then keeps cutting back to him for emotional reaction shots that the audience doesn't yet care about. Hester's Ordeal — confronting Valentine, her father — is the spine of the source, and the film stages it but doesn't earn it because Valentine's role as her Atonement-with-the-Father has been reduced to a single revelation scene. The Allies (Anna Fang, the Anti-Tractionists) appear and die before they accumulate weight. The visuals carry the form; the form does not carry the people.</p>
+  </article>
+
+  <article class="example">
+    <h3>Avatar: The Last Airbender (Netflix live-action)</h3>
+    <p class="credits">2024 · Albert Kim</p>
+    <p>The animated source is a textbook successful monomyth across three seasons; the live-action adaptation compresses Book One into eight episodes and removes precisely the beats that made the structure work. Aang's Refusal of the Call — the running away that traps him in the iceberg — is preserved factually but stripped of guilt because the show flattens his interior conflict. Sokka's arc (unlearning sexism with the Kyoshi Warriors) is explicitly cut, so a key Tests/Allies node vanishes, and his return to the group is unchanged by the encounter. Zuko's parallel monomyth — the one critics consistently cite as the original show's masterstroke — gets foreshortened so his Belly-of-the-Whale moments register as plot points rather than reversals. The form is intact in outline; the emotional architecture that made it generative has been removed in the name of pacing.</p>
+  </article>
+
+  <article class="example">
+    <h3>Wonka</h3>
+    <p class="credits">2023 · Paul King, Simon Farnaby</p>
+    <p>A grafted monomyth with no structural reason to exist. Dahl's source has no origin for Willy Wonka — that absence is part of the character's gravity — and the film constructs a hero's journey to fill it: Ordinary World (arrival in the city), Call (the dream of the chocolate shop), Threshold (signing the laundry contract), Allies (the washhouse crew), Ordeal (the cartel). The beats execute competently. The problem is that the source character is famously sinister, and a coherent monomyth would need to deliver him, transformed, into that sinisterness — the Return with the Boon would be Wonka becoming Wonka. The film cannot do this without breaking its own tone, so it returns him as an undimmed innocent, which voids the prequel's reason to exist. The structure works against the property; the property cannot accommodate the structure. The result is a beat sheet in costume.</p>
+  </article>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 5. ALTERNATIVES                                              -->
+<!-- ============================================================ -->
+<section id="alternatives">
+  <h2><span class="section-num">5.</span>Adaptations &amp; Alternatives</h2>
+  <p class="lede">Frameworks that compress, refute, or sidestep Campbell. For each: what it solves, what it sacrifices.</p>
+
+  <div class="framework">
+    <h3>Dan Harmon's Story Circle</h3>
+    <p>Eight steps, drawn as a circle and read clockwise from the top: <strong>You</strong> (zone of comfort) → <strong>Need</strong> → <strong>Go</strong> (unfamiliar situation) → <strong>Search</strong> (adapt) → <strong>Find</strong> (get what was wanted) → <strong>Take</strong> (pay a heavy price) → <strong>Return</strong> → <strong>Change</strong>. Harmon developed it running Channel 101, the short-film competition he co-founded with Rob Schrab in 2003, and later used it on <em>Community</em> and <em>Rick and Morty</em>.</p>
+    <p class="what"><strong>Solves:</strong> Compresses Campbell into something a TV writer can hold in their head for a 22-minute episode. The circle's symmetry makes the inner-vs-outer movement (top half = ordinary, bottom half = special; left half = before commitment, right half = after) visible at a glance.</p>
+    <p class="what"><strong>Sacrifices:</strong> Coarse resolution — eight beats can't differentiate Mentor from First Threshold. The Campbell-specific psychological events (Belly of the Whale, Atonement, Apotheosis, Master of Two Worlds) flatten into "Take" and "Return." Works best for episodic TV; brittle at feature length.</p>
+  </div>
+
+  <div class="framework">
+    <h3>Maureen Murdock's Heroine's Journey</h3>
+    <p>From <em>The Heroine's Journey: Woman's Quest for Wholeness</em> (1990): Separation from the feminine → Identification with the masculine and gathering of allies → Road of Trials → Illusory boon of success / Spiritual aridity → Descent / Dark night of the soul → Urgent yearning to reconnect with the feminine → Healing the mother/daughter split → Healing the wounded masculine → Integration / Sacred marriage. Murdock developed it from clinical work with women in therapy who had achieved external success and found themselves spiritually empty.</p>
+    <p class="what"><strong>Solves:</strong> Names a transformation arc Campbell's monomyth does not describe — outward achievement followed by recognition of its hollowness, descent, and integration of disowned feminine identity. Useful for character work where the "win" of the conventional hero's journey is the thing that has to be unlearned.</p>
+    <p class="what"><strong>Sacrifices:</strong> Less directly mappable to plot mechanics; the inward stages don't translate cleanly into scene-level beats. Murdock's frame is therapeutic and archetypal rather than dramaturgic.</p>
+  </div>
+
+  <div class="framework">
+    <h3>Kim Hudson's Virgin's Promise</h3>
+    <p>2009 book; foreword by Vogler. Thirteen beats: Dependent World → Price of Conformity → Opportunity to Shine → Dress the Part → Secret World → No Longer Fits Her World → Caught Shining → Gives Up What Kept Her Stuck → Kingdom in Chaos → Wanders in the Wilderness → Chooses Her Light → The Re-ordering → The Kingdom is Brighter.</p>
+    <p class="what"><strong>Solves:</strong> Hudson positions the Virgin's Promise as the <em>counterpart</em>, not counterargument, to Campbell — a story of awakening into authentic self while remaining in (and ultimately transforming) one's community, rather than departing for an external quest. Useful for coming-of-age, coming-out, and self-actualization stories that don't fit the leave-fight-return shape.</p>
+    <p class="what"><strong>Sacrifices:</strong> Less applicable to action/adventure plots driven by external antagonists. Some beats (Dress the Part, Caught Shining) are gender-coded in ways that resist gender-flipping cleanly without translation.</p>
+  </div>
+
+  <div class="framework">
+    <h3>Blake Snyder's <em>Save the Cat!</em> beat sheet</h3>
+    <p>Fifteen beats with specific page targets in a 110-page screenplay: Opening Image (p.1) → Theme Stated (~p.5) → Set-Up (pp.1–10) → Catalyst (~p.12) → Debate (pp.12–25) → Break Into Two (~p.25) → B Story (~p.30) → Fun and Games (pp.30–55) → Midpoint (~p.55) → Bad Guys Close In (pp.55–75) → All Is Lost (~p.75) → Dark Night of the Soul (pp.75–85) → Break Into Three (~p.85) → Finale (pp.85–110) → Final Image (~p.110).</p>
+    <p class="what"><strong>Solves:</strong> Speed and teachability. Producers and writers can compare a draft against the sheet in a single read-through, which makes it useful as a development triage tool.</p>
+    <p class="what"><strong>Sacrifices:</strong> Page-count rigidity is famously the source of mid-2010s "all studio films feel the same" complaints. Snyder's "All Is Lost / whiff of death" flattens the Ordeal-then-Resurrection sequence into a single dip, losing the two-death structure both Campbell and Vogler emphasize.</p>
+  </div>
+
+  <div class="framework">
+    <h3>John Yorke's <em>Into the Woods</em> five-act model</h3>
+    <p>From his 2013 book. Yorke argues that all stories share a single underlying shape because they mirror the cognitive process by which humans assimilate new information: encounter, explore, assimilate. Five turning points instead of three. Roughly: Act 1 establishes a flawed protagonist in a flawed world; Act 2 confronts them with the inverse; Act 3 forces a midpoint reckoning; Act 4 escalates the cost; Act 5 resolves through transformation.</p>
+    <p class="what"><strong>Solves:</strong> Recovers the cognitive/psychological grounding of structure that beat-sheet culture has obscured. Yorke's argument is that structure is not arbitrary scaffolding but a description of how change actually happens in characters — and therefore prescription is fine if you understand <em>why</em>.</p>
+    <p class="what"><strong>Sacrifices:</strong> Less directly tied to mythic content than Campbell-Vogler; doesn't supply specific scene types. More of a meta-structural argument than a writing-room toolkit.</p>
+  </div>
+
+  <div class="framework">
+    <h3>Robert McKee's <em>Story</em> principles</h3>
+    <p>From his 1997 book. McKee's skeleton: <strong>Inciting Incident</strong> → <strong>Progressive Complications</strong> (a series of conflicts of escalating intensity that pass points-of-no-return) → <strong>Crisis</strong> (a forced choice between irreconcilable goods or lesser evils) → <strong>Climax</strong> (the choice executed; story value reverses) → <strong>Resolution</strong>. Above all sits the <strong>Controlling Idea</strong>, a one-sentence statement of cause and effect that the climax proves.</p>
+    <p class="what"><strong>Solves:</strong> Forces the writer to articulate what the story <em>is about</em> — the controlling idea — before structuring scenes. Treats structure as the consequence of a moral/dramatic argument rather than a template into which an idea is poured.</p>
+    <p class="what"><strong>Sacrifices:</strong> Not a stage map; doesn't supply Campbell-style mythic content. Can lean toward arch, "well-made-play" geometry that under-serves stories of stasis, ambiguity, or non-Western temporality.</p>
+  </div>
+
+  <div class="framework">
+    <h3>John Truby's 22 steps</h3>
+    <p>From <em>The Anatomy of Story</em> (2007). Truby's sequence emphasizes moral and psychological cause and effect: Self-revelation, need, and desire → Ghost and story world → Weakness and need → Inciting event → Desire → Ally or allies → Opponent and/or mystery → Fake-ally opponent → First revelation and decision → Plan → Opponent's plan and main counterattack → Drive → Attack by ally → Apparent defeat → Second revelation and decision → Audience revelation → Third revelation and decision → Gate, gauntlet, visit to death → Battle → Self-revelation → Moral decision → New equilibrium.</p>
+    <p class="what"><strong>Solves:</strong> Foregrounds the protagonist-opponent dialectic and the <em>moral</em> dimension. More attentive than Vogler to the antagonist's internal structure and to the protagonist's ethical change.</p>
+    <p class="what"><strong>Sacrifices:</strong> High step count makes it intimidating as a generative tool; works better as a diagnostic/revision framework. Truby is explicitly arguing against "myth-as-template" in favor of organic character logic.</p>
+  </div>
+
+  <div class="framework">
+    <h3>The Story Spine ("Once upon a time…")</h3>
+    <p>Eight prompts: <em>Once upon a time… / Every day… / But, one day… / Because of that… / Because of that… / Until finally… / And ever since then…</em> <strong>Origin: Kenn Adams</strong>, who developed it around 1991 at Freestyle Repertory Theater in New York as an improv/teaching tool. It traveled to Pixar via Rebecca Stockley of BATS Improv around 1997 and was popularized externally when Pixar story artist Emma Coats tweeted it as part of "Pixar's 22 Rules of Storytelling" in 2012. Not a Pixar invention — credit Kenn Adams.</p>
+    <p class="what"><strong>Solves:</strong> Maximally compressed cause-and-effect spine; useful for pitching, premise-testing, and teaching kids. Each "because of that" forces causal logic, which tends to flush out plot-by-coincidence.</p>
+    <p class="what"><strong>Sacrifices:</strong> No interiority, no antagonist structure, no thematic articulation. Generates serviceable plot scaffolding but won't on its own produce a story with weight.</p>
+  </div>
+
+  <div class="framework">
+    <h3>Kishōtenketsu</h3>
+    <p>Four-act narrative structure used across Chinese, Japanese, and Korean literary traditions: <strong>Ki</strong> (introduction) → <strong>Shō</strong> (development without major change) → <strong>Ten</strong> (twist — a new and often surprising element, the structural pivot) → <strong>Ketsu</strong> (reconciliation/conclusion drawing meaning from the juxtaposition of the previous three acts, not from one element defeating another).</p>
+    <p class="what"><strong>Solves:</strong> A working narrative structure that does not require conflict to generate momentum. Essential for stories of contemplation, juxtaposition, atmosphere, slice-of-life, and many forms of non-Western storytelling that the Campbell/Vogler frame either misreads or dismisses as plotless. Visible in Studio Ghibli films, four-panel manga (yonkoma), and much classical Chinese poetry.</p>
+    <p class="what"><strong>Sacrifices:</strong> Less immediately legible to audiences trained on confrontational plot; the Ten (twist) is doing structural work that Western viewers can experience as arbitrary if they're waiting for an antagonist. Doesn't generate the cathartic shape that conflict-driven structures deliver — a feature, not a bug, but a different feature.</p>
+  </div>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 6. FURTHER READING                                           -->
+<!-- ============================================================ -->
+<section id="further-reading">
+  <h2><span class="section-num">6.</span>Further Reading</h2>
+  <p class="lede">Fifteen resources, every URL live-verified at build time. Offline-only resources are catalogued in <a href="#end-notes">End Notes</a>.</p>
+
+  <ul class="reading-list">
+    <li>
+      <span class="res-cite">Joseph Campbell, <em>The Hero with a Thousand Faces</em> (1949; 3rd ed. 2008).</span> The founding text; introduces the departure–initiation–return arc that all later "Hero's Journey" frameworks adapt or argue with. <span class="status status-offline">Offline · note 1</span> Foundation overview: <a class="ext" href="https://www.jcf.org/learn/joseph-campbell-heros-journey" target="_blank" rel="noopener noreferrer">jcf.org/learn/joseph-campbell-heros-journey</a>.
+    </li>
+    <li>
+      <span class="res-cite">Bill Moyers &amp; Joseph Campbell, <em>The Power of Myth</em> (1988 PBS series).</span> Six conversations that put Campbell's ideas on the public-television map; how most people first encountered the monomyth. <span class="status status-online">Online</span> Audio + transcript, episode 1: <a class="ext" href="https://billmoyers.com/content/ep-1-joseph-campbell-and-the-power-of-myth-the-hero%E2%80%99s-adventure-audio/" target="_blank" rel="noopener noreferrer">billmoyers.com — The Hero's Adventure</a>. Series index: <a class="ext" href="https://billmoyers.com/series/joseph-campbell-and-the-power-of-myth-1988/" target="_blank" rel="noopener noreferrer">billmoyers.com — Power of Myth (1988)</a>.
+    </li>
+    <li>
+      <span class="res-cite">Christopher Vogler, "A Practical Guide to <em>The Hero with a Thousand Faces</em>" (1985 Disney memo).</span> The seven-page studio memo that compressed Campbell into twelve usable beats and seeded every Hollywood structure book that followed. <span class="status status-online">Online</span> PDF mirror: <a class="ext" href="https://chrisjonesblog.com/files/chris-vogler-memo-1.pdf" target="_blank" rel="noopener noreferrer">chrisjonesblog.com (PDF)</a>. Context: <a class="ext" href="https://chrisjonesblog.com/2017/05/christopher-vogler-and-the-heros-journey-the-outline-archetypes-and-mythical-memo.html" target="_blank" rel="noopener noreferrer">Chris Jones — Vogler &amp; the mythical memo</a>.
+    </li>
+    <li>
+      <span class="res-cite">Christopher Vogler, <em>The Writer's Journey: Mythic Structure for Writers</em> (3rd ed. 2007; 25th anniv. 2020).</span> The book-length expansion of the memo; the de-facto operating manual for studio storytelling. <span class="status status-offline">Offline · note 2</span> Working blog: <a class="ext" href="https://chrisvogler.wordpress.com/" target="_blank" rel="noopener noreferrer">chrisvogler.wordpress.com</a>.
+    </li>
+    <li>
+      <span class="res-cite">Maureen Murdock, <em>The Heroine's Journey: Woman's Quest for Wholeness</em> (1990).</span> A Jungian student of Campbell maps a separate cyclical arc — separation from the feminine, descent, reconnection — built specifically because Campbell told her "women don't need to make the journey." <span class="status status-offline">Offline · note 3</span> Author essay: <a class="ext" href="https://maureenmurdock.com/articles/articles-the-heroines-journey/" target="_blank" rel="noopener noreferrer">maureenmurdock.com — The Heroine's Journey</a>. Diagram &amp; stage breakdown: <a class="ext" href="https://heroinejourneys.com/heroines-journey/" target="_blank" rel="noopener noreferrer">Heroine Journeys Project</a>.
+    </li>
+    <li>
+      <span class="res-cite">Kim Hudson, <em>The Virgin's Promise</em> (2009).</span> A thirteen-beat arc focused on internal awakening and self-actualization rather than external conquest, intentionally available to any-gender protagonists. <span class="status status-offline">Offline · note 4</span> Author blog: <a class="ext" href="https://kehudson.wordpress.com/about/" target="_blank" rel="noopener noreferrer">kehudson.wordpress.com</a>.
+    </li>
+    <li>
+      <span class="res-cite">Blake Snyder, <em>Save the Cat!</em> (2005).</span> The fifteen-beat sheet that runs most contemporary studio scripts and an ever-growing share of trade fiction; widely conflated with the Hero's Journey though it is its own animal. <span class="status status-offline">Offline · note 5</span> Free reference pages: <a class="ext" href="https://savethecat.com/beat-sheets" target="_blank" rel="noopener noreferrer">savethecat.com — Beat Sheets</a> and the canonical <a class="ext" href="https://savethecat.com/about-the-beats/the-blake-snyder-beat-sheet-a-bridge-to-story" target="_blank" rel="noopener noreferrer">Blake Snyder Beat Sheet — A Bridge to Story</a>.
+    </li>
+    <li>
+      <span class="res-cite">Dan Harmon, "Story Structure 101: Super Basic Shit."</span> Harmon's eight-point Story Circle, written for Channel 101; a working writer's compression of the monomyth into a teachable loop. <span class="status status-online">Online</span> The live page is Cloudflare-blocked to bots; use the Wayback copy: <a class="ext" href="https://web.archive.org/web/20241230212944/https://channel101.fandom.com/wiki/Story_Structure_101:_Super_Basic_Shit" target="_blank" rel="noopener noreferrer">web.archive.org — Story Structure 101</a>.
+    </li>
+    <li>
+      <span class="res-cite">John Yorke, <em>Into the Woods: A Five-Act Journey Into Story</em> (2013).</span> A working BBC drama executive argues the monomyth is really a five-act fractal, and grounds the claim in cognitive psychology rather than mysticism. <span class="status status-offline">Offline · note 6</span> Yorke's primer: <a class="ext" href="https://www.johnyorkestory.com/five-act-structure/" target="_blank" rel="noopener noreferrer">johnyorkestory.com — Five-act structure</a>.
+    </li>
+    <li>
+      <span class="res-cite">Robert McKee, <em>Story</em> (1997).</span> The other dominant studio bible; less mythic than Vogler, more focused on the value-shift inside each scene and the controlling idea that drives the climax. <span class="status status-offline">Offline · note 7</span>
+    </li>
+    <li>
+      <span class="res-cite">John Truby, <em>The Anatomy of Story: 22 Steps to Becoming a Master Storyteller</em> (2007).</span> Explicitly anti-Campbell; argues the Hero's Journey is too generic and replaces it with twenty-two narrative steps organized around moral argument. <span class="status status-offline">Offline · note 8</span>
+    </li>
+    <li>
+      <span class="res-cite">"Still Eating Oranges," "The Significance of Plot Without Conflict" (2012).</span> Short essay introducing kishōtenketsu, a four-act East Asian structure that doesn't require conflict; useful counterweight to Campbell-as-universal. <span class="status status-online">Online</span> <a class="ext" href="https://stilleatingoranges.tumblr.com/post/25153960313/the-significance-of-plot-without-conflict" target="_blank" rel="noopener noreferrer">stilleatingoranges.tumblr.com</a>.
+    </li>
+    <li>
+      <span class="res-cite">Sarah E. Bond &amp; Joel Christensen, "The Man Behind the Myth: Should We Question the Hero's Journey?" <em>Los Angeles Review of Books</em> (2021).</span> Two classicists revisit Campbell's evidentiary base and ask why a model that excludes most actual ancient heroes still dominates twenty-first-century storytelling. <span class="status status-online">Online</span> <a class="ext" href="https://lareviewofbooks.org/article/the-man-behind-the-myth-should-we-question-the-heros-journey/" target="_blank" rel="noopener noreferrer">lareviewofbooks.org</a>.
+    </li>
+    <li>
+      <span class="res-cite">Chris Winkle, "It's Time to Throw Out <em>The Hero with a Thousand Faces</em>," <em>Mythcreants</em>.</span> The strongest plain-language critique of monomyth-as-prescription: argues Campbell never gave a single full example that fit his own pattern, and that Hollywood's adoption of the framework actively harms scripts. <span class="status status-online">Online</span> <a class="ext" href="https://mythcreants.com/blog/its-time-to-throw-out-the-hero-with-a-thousand-faces/" target="_blank" rel="noopener noreferrer">mythcreants.com</a>.
+    </li>
+    <li>
+      <span class="res-cite">Mary Robinette Kowal, the MICE Quotient (Writing Excuses, 2021 deep-dive arc).</span> Kowal's adaptation of Orson Scott Card's Milieu / Inquiry / Character / Event framework, with nesting codes; an alternative diagnostic for story shape that doesn't try to be universal. <span class="status status-online">Online</span> <a class="ext" href="https://writingexcuses.com/tag/mice-quotient/" target="_blank" rel="noopener noreferrer">writingexcuses.com — MICE Quotient tag</a>.
+    </li>
+  </ul>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 7. DELIBERATELY OMITTED                                      -->
+<!-- ============================================================ -->
+<section id="deliberately-omitted">
+  <h2><span class="section-num">7.</span>Deliberately Omitted</h2>
+  <p class="lede">Frequently-cited resources that are <em>not</em> in the Further Reading list, with the specific reason for each omission.</p>
+
+  <ul class="omit-list">
+    <li>
+      <span class="omit-name">Robert Bly, <em>Iron John: A Book About Men</em> (1990)</span>
+      Adjacent monomyth application that fueled the mythopoetic men's movement, but Bly's reading is essentialist (a single fixed "deep masculine") and the book has source-selection bias of the same kind folklorists charge against Campbell. Including it as Hero's Journey reading risks endorsing the framing rather than examining it; readers who want it can find it easily.
+    </li>
+    <li>
+      <span class="omit-name">TVTropes — "The Hero's Journey" page</span>
+      Useful as a crowd-sourced example index, but it's encyclopedic aggregation, not analysis. Readers don't need a curated reference to find TVTropes, and it doesn't survive the bar of "earn a slot in fifteen."
+    </li>
+    <li>
+      <span class="omit-name">"The 12 Stages of the Hero's Journey Explained!" — the Medium / Substack listicle genre</span>
+      Almost universally recycle Vogler-by-way-of-Wikipedia without crediting either, conflate Campbell's seventeen stages with Vogler's twelve, and add no new analysis. No specific URL because the genre is the problem, not any single offender.
+    </li>
+    <li>
+      <span class="omit-name">"Hero's Journey explained" YouTube primers (collective)</span>
+      The dominant mode of these videos treats Vogler's twelve-step Disney-memo arc as Campbell's, which is wrong, and audiences leave more confused than they arrived. The reliable exceptions are scattered enough that a curated list would be quickly out of date; better to send readers to primary sources.
+    </li>
+    <li>
+      <span class="omit-name">AI-generated "Ultimate Guide to the Hero's Journey" content-farm articles</span>
+      Indistinguishable, padded, frequently miscited, and crowding out actual sources in search results. No editorial value; their volume is the only reason to mention the category at all.
+    </li>
+    <li>
+      <span class="omit-name">"Live Your Own Hero's Journey" self-help / life-coaching books</span>
+      A subgenre that reads Campbell as a personal-development program, which both flattens his scholarship and over-promises on it. Not useful for understanding the framework as a <em>narrative</em> tool, which is the point of this reference.
+    </li>
+  </ul>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- 8. END NOTES                                                 -->
+<!-- ============================================================ -->
+<section id="end-notes">
+  <h2><span class="section-num">8.</span>End Notes</h2>
+  <p class="lede">Full bibliographic citations for offline-only resources referenced in <a href="#further-reading">Further Reading</a>. ISBNs verified.</p>
+
+  <ol class="end-notes">
+    <li>Joseph Campbell, <em>The Hero with a Thousand Faces</em>, 3rd edition, New World Library / Joseph Campbell Foundation (Collected Works), 2008. ISBN 978-1-57731-593-3. Original edition: Pantheon Books / Bollingen Series XVII, 1949 (predates ISBN). Paperback widely available new and used; the 2008 edition is the current canonical reference.</li>
+    <li>Christopher Vogler, <em>The Writer's Journey: Mythic Structure for Writers</em>, 3rd edition, Michael Wiese Productions, 2007. ISBN 978-1-932907-36-0. A 25th-anniversary edition was issued in 2020 (Michael Wiese Productions, ISBN 978-1-61593-315-0). Both editions are in print.</li>
+    <li>Maureen Murdock, <em>The Heroine's Journey: Woman's Quest for Wholeness</em>, Shambhala, 1990; 30th-anniversary edition 2020. Original ISBN 978-0-87773-485-7. In print; new and used copies are easy to find via standard booksellers.</li>
+    <li>Kim Hudson, <em>The Virgin's Promise: Writing Stories of Feminine Creative, Spiritual, and Sexual Awakening</em>, Michael Wiese Productions, 2009. ISBN 978-1-932907-72-8. In print.</li>
+    <li>Blake Snyder, <em>Save the Cat! The Last Book on Screenwriting You'll Ever Need</em>, Michael Wiese Productions, 2005. ISBN 978-1-932907-00-1. In print; near-ubiquitous in chain bookstores and used.</li>
+    <li>John Yorke, <em>Into the Woods: A Five-Act Journey Into Story</em>, Overlook Press (US) / Penguin (UK), 2013. UK paperback ISBN 978-0-141-97810-9. In print on both sides of the Atlantic.</li>
+    <li>Robert McKee, <em>Story: Substance, Structure, Style and the Principles of Screenwriting</em>, ReganBooks / HarperCollins, 1997. ISBN 978-0-06-039168-3. In print; standard text in most film-school curricula.</li>
+    <li>John Truby, <em>The Anatomy of Story: 22 Steps to Becoming a Master Storyteller</em>, Faber and Faber, 2007. ISBN 978-0-86547-951-7. In print; widely stocked.</li>
+  </ol>
+
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>
+
+<footer class="page-footer">
+  <p>Set in Iowan Old Style with system fallbacks. No third-party fonts, no analytics, no tracking. Source links verified against live HTTP responses at build time; offline-only resources catalogued in End Notes.</p>
+  <p>License: <span id="license-placeholder">[choose: CC BY 4.0 / CC0 / MIT — set in repo]</span> · <a href="#" id="repo-link-footer" rel="noopener">Repository</a> · <a href="#top">Back to top</a></p>
+</footer>
+
+</main>
+</div>
+
+<!-- ============================================================ -->
+<!-- Mobile nav toggle                                            -->
+<!-- ============================================================ -->
+<script>
+(function () {
+  // ---- Mobile nav toggle ----
+  var toggle = document.querySelector('.nav-toggle');
+  var list = document.getElementById('nav-list');
+  if (toggle && list) {
+    toggle.addEventListener('click', function () {
+      var open = list.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    list.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A' && window.innerWidth <= 880) {
+        list.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
