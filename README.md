@@ -29,4 +29,4 @@ If a link rots, the fix is either: (1) replace with the Wayback Machine snapshot
 
 ## License
 
-Choose and set in this README and in the page footer (look for `id="license-placeholder"`).
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Reuse with attribution.
